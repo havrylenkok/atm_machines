@@ -22,6 +22,8 @@ fastapi==0.85.0
     # via -r requirements/base.in
 flake8==5.0.4
     # via pytest-flake8
+geoalchemy2==0.12.5
+    # via -r requirements/base.in
 h11==0.14.0
     # via uvicorn
 httptools==0.5.0
@@ -41,7 +43,9 @@ markupsafe==2.1.1
 mccabe==0.7.0
     # via flake8
 packaging==21.3
-    # via pytest
+    # via
+    #   geoalchemy2
+    #   pytest
 pluggy==1.0.0
     # via pytest
 psycopg2-binary==2.9.3
@@ -82,6 +86,7 @@ sqlalchemy==1.4.41
     # via
     #   -r requirements/base.in
     #   alembic
+    #   geoalchemy2
 starlette==0.20.4
     # via fastapi
 tomli==2.0.1
