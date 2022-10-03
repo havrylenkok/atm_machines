@@ -1,0 +1,45 @@
+version: "3"
+services:
+  atm_machines_base: &atm_machines_base
+    image: atm_machines:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8000:8000"
+
+  atm_machines_local:
+    <<: *atm_machines_base
+    container_name: atm_machines_local
+    environment:
+      - ENV_NAME=local
+      - DB_HOST=${DB_HOST:-postgres}
+      - DB_PORT=${DB_PORT:-5432}
+      - DB_USERNAME=${DB_USERNAME:-atm_machines}
+      - DB_PASSWORD=${DB_PASSWORD:-compromisedstring}
+    volumes:
+      - .:/app
+    command:
+      ["uvicorn", "main:app", "--host=0.0.0.0", "--reload"]
+
+  atm_machines_tests:
+    <<: *atm_machines_base
+    container_name: atm_machines_tests
+    image: atm_machines_tests:latest
+    environment:
+      - ENV_NAME=tests
+    volumes:
+      - .:/app
+    depends_on:
+      - atm_machines_test_db
+    links:
+      - atm_machines_test_db:postgres
+    command:
+      ["pytest -v"]
+
+  atm_machines_test_db:
+    image: postgis/postgis:14-3.3
+    container_name: atm_machines_test_db
+    environment:
+      - POSTGRES_DB=atm_machines_tests
+      - POSTGRES_HOST_AUTH_METHOD=trust
