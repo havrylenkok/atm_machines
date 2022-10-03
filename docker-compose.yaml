@@ -13,12 +13,17 @@ services:
     container_name: atm_machines_local
     environment:
       - ENV_NAME=local
+      - DB_NAME=${DB_NAME:-atm_machines}
       - DB_HOST=${DB_HOST:-postgres}
       - DB_PORT=${DB_PORT:-5432}
-      - DB_USERNAME=${DB_USERNAME:-atm_machines}
-      - DB_PASSWORD=${DB_PASSWORD:-compromisedstring}
+      - DB_USERNAME=${DB_USERNAME:-postgres}
+      - DB_PASSWORD=${DB_PASSWORD:-}
     volumes:
       - .:/app
+    links:
+      - atm_machines_db:postgres
+    depends_on:
+      - atm_machines_db
     command:
       ["uvicorn", "main:app", "--host=0.0.0.0", "--reload"]
 
@@ -37,9 +42,26 @@ services:
     command:
       ["pytest -v"]
 
-  atm_machines_test_db:
+  atm_machines_db_base: &atm_machines_db_base
     image: postgis/postgis:14-3.3
+
+  atm_machines_db:
+    <<: *atm_machines_db_base
+    container_name: atm_machines_db
+    environment:
+      - POSTGRES_DB=atm_machines
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - "5432:5432"
+    volumes:
+      - atm_machines_db_volume:/var/lib/postgresql/data
+
+  atm_machines_test_db:
+    <<: *atm_machines_db_base
     container_name: atm_machines_test_db
     environment:
       - POSTGRES_DB=atm_machines_tests
       - POSTGRES_HOST_AUTH_METHOD=trust
+
+volumes:
+  atm_machines_db_volume:

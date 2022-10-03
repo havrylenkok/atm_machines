@@ -2,7 +2,8 @@ fastapi~=0.85.0
 uvicorn[standard]~=0.18.3
 pydantic~=1.10.2
 sqlalchemy~=1.4.41
-databases[asyncpg]~=0.6.1
+psycopg2-binary~=2.9.3
+alembic~=1.8.1
 sentry-sdk~=1.9.10
 
 pytest~=7.1.3
