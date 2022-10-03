@@ -3,7 +3,7 @@ from typing import List
 from fastapi import APIRouter
 
 from atm_machines.atms.schemas import Note, NoteIn
-from atm_machines.database import notes, db
+from atm_machines.database import db, notes
 
 router = APIRouter()
 
