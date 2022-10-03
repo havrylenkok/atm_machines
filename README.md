@@ -1,4 +1,9 @@
-
+# Todo
+- Unit tests
+- Load test (artillery) for read
+- Instructrions how to run
+- Push to github, setup CI
+- Deploy with EC2?
 
 # Cut corners
 
@@ -6,3 +11,4 @@
 - logs and json formatting
 - Postgis indexes for geographies
 - better pydantic schemas for create response
+  - store lat/long separately from geography
