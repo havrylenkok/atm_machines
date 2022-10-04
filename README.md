@@ -48,8 +48,30 @@ pre-commit install
 ```
 
 # Todo
-- Push to github, setup CI
+- setup CI
 - Deploy with EC2?
+
+# Notable
+
+The app has pre-commit checks set up: black, isort, mypy...
+
+Alembic for schema migrations.
+
+Pytest for unit tests.
+
+Dockerfile and docker-compose services for both local and remote usage.
+Db as a volume for local app.
+
+Db as indicated in Dockerfile - Postgis. Queried via Sqlalchemy+Geoalchemy2.
+
+Postgis is taken advantage of to query in the radius of location,
+and return distance from the location.
+
+Package versions are locked via pip-tools.
+
+Request query parameters and body are parsed/validated by Pydantic. The same for response.
+
+Api is versioned via path.
 
 # Cut corners
 
