@@ -33,6 +33,10 @@ services:
     image: atm_machines_tests:latest
     environment:
       - ENV_NAME=tests
+      - DB_NAME=${DB_NAME:-atm_machines_tests}
+      - DB_HOST=${DB_HOST:-postgres}
+      - DB_PORT=${DB_PORT:-5432}
+      - DB_USERNAME=${DB_USERNAME:-postgres}
     volumes:
       - .:/app
     depends_on:
@@ -40,7 +44,7 @@ services:
     links:
       - atm_machines_test_db:postgres
     command:
-      ["pytest -v"]
+      ["pytest", "-v"]
 
   atm_machines_db_base: &atm_machines_db_base
     image: postgis/postgis:14-3.3

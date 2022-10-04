@@ -12,9 +12,9 @@ router = APIRouter()
 
 @router.get("/atms/", response_model=List[Atm])
 def read_atms(params: AtmsReadParams = Depends(), db: Session = Depends(get_db)):
-    return AtmsController(db).read_atms(params)
+    return AtmsController(db).read_atms(params=params)
 
 
 @router.post("/atms/", response_model=AtmShort)
 def create_atm(params: AtmCreateParams, db: Session = Depends(get_db)):
-    return AtmsController(db).create_atm(params)
+    return AtmsController(db).create_atm(params=params)
