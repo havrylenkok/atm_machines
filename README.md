@@ -126,7 +126,6 @@ following steps would've been taken:
   - Have all the DB-related things passed from the chart as env vars and ideally managed as secrets
   - start at least 2 pods to achieve relative availability during rolling restarts
 - for the sake of the exersice, deploy behind basic-auth, but in real world - behind API gateway
-  - I've used Kong
 
 A "cheap" version of it could be achieved via RDS and EC2 in AWS. Pull the image, start it behind nginx.
 
