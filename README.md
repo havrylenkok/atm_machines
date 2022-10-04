@@ -13,7 +13,8 @@ Apply migrations via:
 
 `docker-compose run atm_machines_local alembic upgrade head`
 
-`wait-for-it.sh` is one of the corners cut. If you see errors `postgres` not being available,
+`wait-for-it.sh` is one of the corners cut (see below).
+If you see errors about `postgres` not being available,
 wait a moment and restart the `atm_machines_local`.
 
 Access the API via calls to `http://localhost:8000/`.
