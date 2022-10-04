@@ -88,6 +88,7 @@ Repo has the CI setup for building the image and running tests via Github Action
 - model factories for tests
 - more detailed unit tests
 - load tests for endpoints (i.e. Artillery)
+- pre-commit checks in CI
 
 Deployment has been cut due to the timeframe,
 however in case of more time and existence of a Kubernetes cluster,
