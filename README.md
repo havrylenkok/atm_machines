@@ -13,6 +13,9 @@ Apply migrations via:
 
 `docker-compose run atm_machines_local alembic upgrade head`
 
+`wait-for-it.sh` is one of the corners cut. If you see errors `postgres` not being available,
+wait a moment and restart the `atm_machines_local`.
+
 Access the API via calls to `http://localhost:8000/`.
 
 Openapi.json is accessible at `http://localhost:8000/openapi.json`.
@@ -110,6 +113,7 @@ Repo has the CI setup for building the image and running tests via Github Action
 - load tests for endpoints (i.e. Artillery)
 - pre-commit checks in CI
 - endpoints for other CRUD operations
+- wait for db to start
 
 Deployment has been cut due to the timeframe,
 however in case of more time and existence of a Kubernetes cluster,
