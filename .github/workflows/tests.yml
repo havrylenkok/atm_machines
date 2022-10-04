@@ -9,5 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker-compose up atm_machines_tests
+    - name: Start the test db
+      run: docker-compose up -d atm_machines_test_db
+    - name: Build the image
+      run: docker-compose build atm_machines_tests
+    - name: Run tests
+      run: docker-compose run atm_machines_tests
+    - name: Down services
+      run: docker-compose down
