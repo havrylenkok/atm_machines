@@ -61,3 +61,4 @@ pre-commit install
 - manual application of migrations
 - model factories for tests
 - detailed unit tests
+- load tests for endpoints
