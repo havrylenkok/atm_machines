@@ -97,6 +97,7 @@ def test_atms__controller_read_atms__point(
 
 
 def test_atms__controller_read_atms__radius():
+    # todo: cut corner
     # check that query is filtered by radius when point is present
     pass
 

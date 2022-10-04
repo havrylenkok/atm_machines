@@ -104,10 +104,10 @@ Repo has the CI setup for building the image and running tests via Github Action
 # Cut corners
 
 - error formatting (400, 500)
+- error reporting via Sentry (var in settings is present)
 - json formatting of logs
 - Postgis indexes for geographies
-- better pydantic schemas for create response
-  - store lat/long separately from geography
+- store lat/long separately from geography?
 - automatic application of migrations
 - model factories for tests
 - more detailed unit tests
@@ -115,6 +115,7 @@ Repo has the CI setup for building the image and running tests via Github Action
 - pre-commit checks in CI
 - endpoints for other CRUD operations
 - wait for db to start
+- better example data for request schemas in openapi.json
 
 Deployment has been cut due to the timeframe,
 however in case of more time and existence of a Kubernetes cluster,
