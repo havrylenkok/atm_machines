@@ -1,7 +1,7 @@
 # atm_machines
 
 A FastAPI uvicorn app that allows to create an atm and
-then retrieve atms in specific location via filters.
+then retrieve atms in specific location with filtering.
 
 ## Running app locally
 
