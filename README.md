@@ -76,18 +76,35 @@ pre-commit install
 
 The app has pre-commit checks set up: black, isort, mypy...
 
+*why: formatting code manually is a pain; arguing about PEP8 compliance in PR reviews loses time*
+
 Pytest for unit tests.
+
+*why: familiarity; amount of features and plugins*
 
 Dockerfile and docker-compose services for both local and remote usage.
 Db as a volume for local app.
 
-Db as indicated in Dockerfile - Postgis. Queried via Sqlalchemy+Geoalchemy2.
-Adapter - psycopg2. Mainly because asyncpg fails to install and would've taken
-a lot of time to investigate.
+*why: to be able to launch the app with 1 command with expectation to
+close-to-identical environment no matter what*
 
-Alembic for schema migrations.
+Db as indicated in Dockerfile - Postgresql+Postgis. Queried via Sqlalchemy+Geoalchemy2.
+Adapter - psycopg2.
+
+*why postgres: familiarity; ACID; plugins and docs*
+
+*why psycopg2: familiarity; asyncpg fails to install and would've taken a lot of time to investigate*
+
+*why sqlalchemy: popularity and familiarity*
+
+Alembic for schema migrations
+
+*why: popularity and familiarity*
 
 Due to postgres adapter the Fastapi views are sync.
+
+*why fastapi: fast in [benchmarks](http://klen.github.io/py-frameworks-bench/);
+stable, feature-rich and popular in the community; concise*
 
 Postgis is taken advantage of to query in the radius of location,
 and return distance from the location.
@@ -99,7 +116,13 @@ The same for response.
 
 Api is versioned via path.
 
+*why: easier to explore; human readable and less prone to client errors; easier to support multiple versions*
+
 Repo has the CI setup for building the image and running tests via Github Actions.
+
+*why ci: mainly to flag non-working code ASAP and not let it even go to the review stage in that state*
+
+*why Actions: code is hosted on Github and Actions are native*
 
 # Cut corners
 
