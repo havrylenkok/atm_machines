@@ -139,6 +139,7 @@ Repo has the CI setup for building the image and running tests via Github Action
 - endpoints for other CRUD operations
 - wait for db to start
 - better example data for request schemas in openapi.json
+- improvements to response schema: count of total items; array inside of the object
 
 Deployment has been cut due to the timeframe,
 however in case of more time and existence of a Kubernetes cluster,
